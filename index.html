@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email and Password Verification</title>
+</head>
+<body>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+        <p id="emailMessage"></p>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter your password">
+        <p id="passwordStrength"></p>
+    </div>
+   
+
+    <script>
+        const emailInput = document.getElementById('email');
+        const emailMessage = document.getElementById('emailMessage');
+        const passwordInput = document.getElementById('password');
+        const passwordStrength = document.getElementById('passwordStrength');
+        
+
+        // Email validation
+        emailInput.addEventListener('input', function () {
+            const email = emailInput.value;
+            if (/^\S+@\S+\.\S+$/.test(email)) {
+                emailMessage.textContent = 'Valid email address';
+                emailMessage.style.color = 'green';
+            } else {
+                emailMessage.textContent = 'Invalid email address';
+                emailMessage.style.color = 'red';
+            }
+        });
+
+        // Password strength validation
+        passwordInput.addEventListener('input', function () {
+            const password = passwordInput.value;
+            if (password.length >= 8) {
+                passwordStrength.textContent = 'Strong password';
+                passwordStrength.style.color = 'green';
+            } else if (password.length >= 6) {
+                passwordStrength.textContent = 'Moderate password';
+                passwordStrength.style.color = 'orange';
+            } else {
+                passwordStrength.textContent = 'Weak password';
+                passwordStrength.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
